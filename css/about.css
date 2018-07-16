@@ -94,4 +94,13 @@ section a {
   border-radius: 10px;
   padding: 10px;
 }
-/*# sourceMappingURL=styles.css.map */
+
+header img {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+header div {
+  line-height: 24px;
+}
+/*# sourceMappingURL=about.css.map */

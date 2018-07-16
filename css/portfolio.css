@@ -94,4 +94,43 @@ section a {
   border-radius: 10px;
   padding: 10px;
 }
-/*# sourceMappingURL=styles.css.map */
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .titles {
+  width: 60%;
+  margin-left: 20px;
+}
+
+header .result {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 12px;
+  line-height: 16px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .result .result-frame {
+  background: url("../img/fgc-ladder-ss.jpg");
+  background-size: cover;
+  width: 80%;
+  height: 50%;
+  border: 2px solid #eee;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=portfolio.css.map */
