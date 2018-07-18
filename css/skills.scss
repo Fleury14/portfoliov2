@@ -1,0 +1,43 @@
+@import './common';
+
+header {
+    display: flex;
+}
+
+.skill-list {
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 60%;
+    height: 55vh;
+}
+.skill-desc {
+    width: 40%;
+    height: 55vh;
+    line-height: 24px;
+    
+    h2 {
+        text-align: center;
+    }
+}
+
+.skills-card {
+
+    margin-left: 20px;
+    img {
+        margin-right: 25px;
+    }
+}
+
+.xp-frame {
+    width: 100px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 10px;
+}
+
+.xp-bar {
+    background-color: green;
+    height: 100%;
+    border-radius: 5px;
+}

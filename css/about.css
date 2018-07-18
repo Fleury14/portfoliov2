@@ -93,6 +93,7 @@ section a {
   width: 50%;
   border-radius: 10px;
   padding: 10px;
+  z-index: 5;
 }
 
 header img {

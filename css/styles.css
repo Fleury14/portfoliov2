@@ -40,12 +40,19 @@ body {
   min-height: 100vh;
   color: #eee;
   margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: 100% minmax(max-content, 250px);
+      grid-template-rows: 100% minmax(-webkit-max-content, 250px);
+      grid-template-rows: 100% minmax(max-content, 250px);
 }
 
 header {
   background: url("../img/background-code-2-pixel.jpg");
   background-size: cover;
-  height: 60vh;
+  height: 100%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,13 +63,25 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
 }
 
 main {
-  height: 40vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
 }
 
 aside {
