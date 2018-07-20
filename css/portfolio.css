@@ -40,12 +40,18 @@ body {
   min-height: 100vh;
   color: #eee;
   margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: calc(100vh - 200px) 200px;
+      grid-template-rows: calc(100vh - 200px) 200px;
 }
 
 header {
   background: url("../img/background-code-2-pixel.jpg");
   background-size: cover;
-  height: 60vh;
+  height: 100%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,13 +62,25 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
 }
 
 main {
-  height: 40vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
 }
 
 aside {
@@ -94,6 +112,31 @@ section a {
   border-radius: 10px;
   padding: 10px;
   z-index: 5;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    height: 100%;
+    -ms-grid-rows: 100% 100%;
+        grid-template-rows: 100% 100%;
+  }
+  header {
+    height: 400px;
+  }
+  main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+  }
+  aside, section, .info {
+    width: calc(100% - 20px);
+    padding: 0;
+  }
 }
 
 header {

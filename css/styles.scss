@@ -42,7 +42,7 @@ body {
     margin: 0;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100% minmax(max-content, 250px);
+    grid-template-rows: calc(100vh - 200px) 200px;
 }
 
 header {
@@ -96,5 +96,27 @@ section {
     width: 50%;
     border-radius: 10px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        height: 100%;
+        grid-template-rows: 100% 100%;
+    }
+
+    header {
+        height: 400px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    aside, section, .info {
+        width: calc(100% - 20px );
+        padding: 0;
+    }
 }
 

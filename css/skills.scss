@@ -41,3 +41,34 @@ header {
     height: 100%;
     border-radius: 5px;
 }
+
+@media only screen and (max-width: 768px) {
+
+
+    header {
+        height: 100%;
+        flex-direction: column;
+        width: 100%;
+
+        .skill-list {
+            margin-top: 25px;
+            min-height: 250px;
+            height: 100%;
+            width: 100%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin-bottom: 150px;
+        }
+
+        .skill-desc {
+            width: 100%;
+            margin-left: 25px;
+            min-height: 250px;
+            overflow: hidden;
+            height: 100%;
+        }
+    }
+
+    
+  
+}
