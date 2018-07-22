@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+// BEGIN GLOBAL
+
+.flex-container {
+    display: flex;
+}
+
+.justify-space-around {
+    justify-content: space-around;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.highlight {
+    color: yellow;
+}
+
+// END GLOBAL
+
+.icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: block;
+    color: #eee;
+    text-decoration: none;
+    transition: 0.25s all;
+
+    &:hover {
+        color: yellow;
+    }
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(#1010b2, #0f1064);
+    min-height: 100vh;
+    color: #eee;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: calc(100vh - 200px) 200px;
+}
+
+header {
+    background: url('./assets/img/background-code-2-pixel.jpg');
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+    img {
+        
+    }
+}
+
+main {
+    height: 100%;
+    display: flex;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+aside {
+    border: 8px ridge;
+    width: 30%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+section {
+    border: 8px ridge;
+    width: 20%;
+    border-radius: 10px;
+
+    p {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #eee;
+    }
+}
+
+.info {
+    border: 8px ridge;
+    width: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 5;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        height: 100%;
+        grid-template-rows: 100% 100%;
+    }
+
+    header {
+        height: 400px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    aside, section, .info {
+        width: calc(100% - 20px );
+        padding: 0;
+    }
+}
