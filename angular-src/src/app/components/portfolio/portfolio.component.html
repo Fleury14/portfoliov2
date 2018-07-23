@@ -1,14 +1,9 @@
 <header>
     <div class="titles">
-        <h2 class="highlight">FGC LADDER</h2>
-        <h2>ANGULAR2 LESSONS</h2>
-        <h2>TNR</h2>
-        <h2>CYO</h2>
-        <h2>WORDFIGHT</h2>
-        <h2>MATCHQ</h2>
+        <h2 *ngFor="let portfolio of portList" (click)="switchPort(portfolio.link)" [ngClass]="{'highlight': portfolio.title == activePort.title}">{{ portfolio.title }}</h2>
     </div>
     <div class="result">
-        <div class="result-frame"></div>
-        <p>An interactive ladder system designed for fighting game players to test their skills in various titles.</p>
+        <div class="result-frame" [ngStyle]="{'background': 'url(' + linkPrefix + activePort.link + ') 0% 0% / cover' }"></div>
+        <p>{{ activePort.description }}</p>
     </div>
 </header>
