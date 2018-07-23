@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component'
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Route[] = [{
     path: 'home',
@@ -15,6 +16,10 @@ const routes: Route[] = [{
 {
     path: 'skills',
     component: SkillsComponent
+},
+{
+    path: 'about',
+    component: AboutComponent
 },
 {
     path: '',
@@ -33,4 +38,4 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent ];
+export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent ];
