@@ -5,6 +5,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { OtherComponent } from './components/other/other.component';
 
 const routes: Route[] = [{
     path: 'home',
@@ -27,6 +28,10 @@ const routes: Route[] = [{
     component: ContactComponent
 },
 {
+    path: 'other',
+    component: OtherComponent
+},
+{
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -43,4 +48,4 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent, ContactComponent ];
+export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent, ContactComponent, OtherComponent ];

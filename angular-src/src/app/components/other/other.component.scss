@@ -1,0 +1,24 @@
+header {
+    display: flex;
+    
+    p {
+        line-height: 24px;
+        margin: 20px;
+        width: 70%;
+    }
+
+    .lucky-pic {
+        height: 400px;
+        width: 30%;
+        background: url('../../../assets/img/pixel-lucky-again.jpg');
+        background-size: cover;
+        transition: background 1s;
+        z-index: 0;
+        max-height: 60vh;
+
+        &:hover {
+            background: url('../../../assets/img/luckyagain.jpg');
+            background-size: cover;
+        }
+    }
+}
