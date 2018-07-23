@@ -28,7 +28,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
   private _keyPress(event) {
     if (event.key === 'ArrowDown') this._menuIndex = this._menuIndex === this.navItems.length - 1 ? 0 : this._menuIndex + 1;
     if (event.key === 'ArrowUp') this._menuIndex = this._menuIndex === 0 ? this.navItems.length - 1 : this._menuIndex - 1;
-    if (event.key === 'Enter') this._router.navigateByUrl(this.navItems[this._menuIndex].route);
+    if (event.key === 'Enter') {
+      console.log('enter!', this.navItems[this._menuIndex].route, this._router);
+      this._router.navigateByUrl( this.navItems[this._menuIndex].route ).then(res => console.log('nav promise', res));
+    }
+
     this._drawCheckbox();
   }
 

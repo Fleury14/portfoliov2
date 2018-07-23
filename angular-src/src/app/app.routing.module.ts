@@ -6,6 +6,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { OtherComponent } from './components/other/other.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Route[] = [{
     path: 'home',
@@ -35,10 +36,15 @@ const routes: Route[] = [{
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-}];
+},
+{
+    path: '**',
+    component: ErrorComponent
+}
+];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
+    imports: [ RouterModule.forRoot(routes, {enableTracing: true}), ],
     exports: [ RouterModule ],
     providers: [ ]
 
@@ -48,4 +54,4 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent, ContactComponent, OtherComponent ];
+export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent, ContactComponent, OtherComponent, ErrorComponent ];
