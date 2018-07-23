@@ -7,3 +7,36 @@ h1 {
 header {
     flex-direction: column;
 }
+
+.icon-container {
+
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    a {
+        text-decoration: none;
+        color: #eee;
+        transition: 0.25s all;
+
+        &:hover {
+            color: yellow;
+        }
+    }
+}
+
+.icon-set {
+
+    height: 30px;
+    align-items: center;
+    margin-right: 50px;
+
+    p {
+        margin: 0;
+        margin-left: 10px;
+    }
+
+    .contact-icon {
+        font-size: 24px;
+    }
+}
+
