@@ -2,13 +2,16 @@
   <aside>
       <p class="">Web Developer</p>
   </aside>
-  <section>
-      <a routerLink="portfolio"><p class="option0 highlight">Portfolio</p></a> 
-      <a routerLink="skills"><p class="option1">Skills</p></a>
-      <a routerLink="about"><p class="option1">About</p></a>
-      <a routerLink="contact"><p class="option1">Contact</p></a>
-      <a routerLink="other"><p class="option4">Other</p></a>
-      <a routerLink="home"><p class="option5">Main</p></a> 
+  <section class="flex-container">
+      <div class="arrow-column">
+        <div *ngFor="let navItem of navItems" id="opt-{{navItem.index}}" class="menu-checkbox option-{{navItem.index}}"></div>
+      </div>
+      <div class="name-column">
+        <a *ngFor="let navItem of navItems" routerLinkActive="highlight" routerLink="{{ navItem.route }}">
+            <p>{{ navItem.title }}</p>
+        </a>
+      </div>
+      
   </section>
   <div class="info">
       <h2>J.R. RUGGIERO</h2>
