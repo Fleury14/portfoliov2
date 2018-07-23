@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    
+    .titles {
+        width: 60%;
+        margin-left: 20px;
+    }
+
+    .result {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-size: 12px;
+        line-height: 16px;
+        justify-content: center;
+
+        .result-frame {
+            background: url('./../../../assets/img/fgc-ladder-ss.jpg');
+            background-size: cover;
+            width: 80%;
+            height: 50%;
+            border: 2px solid #eee;
+            border-radius: 10px;
+        }
+    }
+}

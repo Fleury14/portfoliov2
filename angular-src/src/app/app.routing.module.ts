@@ -1,10 +1,15 @@
 import { RouterModule, Route } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component'
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 const routes: Route[] = [{
     path: 'home',
     component: HomeComponent
+},
+{
+    path: 'portfolio',
+    component: PortfolioComponent
 },
 {
     path: '',
@@ -23,4 +28,4 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [ HomeComponent ];
+export const routingComponents = [ HomeComponent, PortfolioComponent ];
