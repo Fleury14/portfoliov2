@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../services/player';
+import { Enemy } from '../../interfaces/enemy';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public enemy:Enemy;
+
+  constructor(private _player: PlayerService) { }
 
   ngOnInit() {
+    this.enemy = this._player.enemy;
   }
 
 }

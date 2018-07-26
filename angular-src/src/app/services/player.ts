@@ -11,12 +11,19 @@ export class PlayerService {
     enemyClass:EnemyList = new EnemyList()
 
     public initializePlayer() {
-        this.player.maxHP = 850;
-        this.player.currentHP = 850;
+        this.player = {
+            maxHP: 850,
+            currentHP: 850,
+            maxMP: 90,
+            currentMP: 90
+        }
+
+        console.log('Player initialized');
     }
 
     public getEnemy() {
-        let randIndex = Math.floor( +Math.random * this.enemyClass.enemies.length );
+        let randIndex = Math.floor( Math.random() * this.enemyClass.enemies.length );
         this.enemy = this.enemyClass.enemies[randIndex];
+        console.log('Enemy initialized');
     }
 }

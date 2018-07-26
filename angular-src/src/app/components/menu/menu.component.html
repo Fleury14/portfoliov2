@@ -1,6 +1,6 @@
 <main>
   <aside>
-      <p class="">Web Developer</p>
+      <p class="">{{ enemy?.name }}</p>
   </aside>
   <section class="flex-container">
       <div class="arrow-column">
@@ -15,7 +15,7 @@
   </section>
   <div class="info">
       <h2>J.R. RUGGIERO</h2>
-      <p>HP: 780 / 790</p>
-      <p>MP: 85 / 90</p>
+      <p>HP: {{ player.currentHP }} / {{ player.maxHP }}</p>
+      <p>MP: {{ player.currentMP }} / {{ player.maxMP }}</p>
   </div>
 </main>
