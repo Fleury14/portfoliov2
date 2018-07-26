@@ -12,7 +12,8 @@ export class SkillsComponent implements OnInit {
     public maxWidth = 100;
     public maxUnit = 'px';
     public skillz = new Skills();
-    public xp = this.skillz.skillList;
+    public xp:ISkill[] = this.skillz.skillList;
+    public activeSkill:ISkill = this.xp[0];
     
 
   constructor() { }
@@ -28,6 +29,10 @@ export class SkillsComponent implements OnInit {
     //     }
     //     if (element) document.querySelector(`#${skill.name} .xp-bar`).style.width = skill.xp + maxUnit;
     // })
+  }
+
+  public switchSkill(title: string) {
+    this.activeSkill = this.xp.find( (skill: ISkill) => skill.title === title);
   }
 
 }
