@@ -15,10 +15,27 @@ header {
         transition: background 1s;
         z-index: 0;
         max-height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &:hover {
             background: url('../../../assets/img/luckyagain.jpg');
             background-size: cover;
+        }
+    }
+
+    button {
+        font-family: 'Press Start 2P', cursive;
+        padding: 10px;
+        border: 6px ridge;
+        border-radius: 5px;
+        color: #eee;
+        background-color: #0f1070;
+        transition: 0.5s all;
+
+        &:hover {
+            cursor: pointer;
         }
     }
 }

@@ -1,4 +1,8 @@
 <header class="flex-container justify-space-around">
-    <img [src]="enemy.img" alt="enemy" height="250" width="250">
-    <img src="./../../../assets/img/jr.png" height="250" width="250" alt="me">
+    <img [src]="enemy.img" alt="enemy" height="250" width="250" id="enemyPic">
+    <div class="player-side">
+        <img src="./../../../assets/img/jr.png" height="250" width="250" alt="me">
+        <h2 id="playerDmg" class="invisible">{{ currentDamage }}</h2>
+    </div>
+    
 </header>

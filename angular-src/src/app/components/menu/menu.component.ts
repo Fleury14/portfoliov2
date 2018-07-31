@@ -6,6 +6,8 @@ import { Router } from '../../../../node_modules/@angular/router';
 import { PlayerService } from '../../services/player';
 import { Actor } from '../../interfaces/actor';
 import { Enemy } from '../../interfaces/enemy';
+import { Subscription } from 'rxjs';
+import { Command } from 'src/app/interfaces/command';
 
 @Component({
   selector: 'app-menu',
@@ -19,12 +21,19 @@ export class MenuComponent implements OnInit, AfterViewInit {
   private _menuIndex = 0;
   public player: Actor;
   public enemy: Enemy;
+  private commandSub: Subscription;
 
   constructor(private _router: Router, private _player: PlayerService) { }
 
   ngOnInit() {
-    this.refreshStats();
+    this._player.playerObs().subscribe( (data:Actor) => {
+      this.player = data;
+    });
+    this._player.transmitInfo();
     this.enemy = this._player.enemy;
+    this._player.commandObs().subscribe( (data:Command) => {
+      console.log('Command receieved', data);
+    } )
   }
 
   ngAfterViewInit() {
