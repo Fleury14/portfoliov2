@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public currentDamage: number;
   public commandSub: Subscription;
   public commandText:string;
+  private _timeouts: any[] = [];
 
   constructor(private _player: PlayerService) { }
 
@@ -31,16 +32,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private _executeEnemyTurn() {
     this.enemyAttackFlash();
-    setTimeout( () => {
+    this._timeouts.push(setTimeout( () => {
       this.currentDamage = this.calculateDamage();
       this.displayPlayerDamage();
       this._player.damagePlayer(this.currentDamage);
-    }, 1000); 
+    }, 1000)); 
   }
 
   public displayPlayerDamage() {
     document.getElementById('playerDmg').classList.toggle('get-ready-to-bounce');
-    setTimeout( () => { document.getElementById('playerDmg').classList.toggle('get-ready-to-bounce'); }, 600);
+    this._timeouts.push(setTimeout( () => { document.getElementById('playerDmg').classList.toggle('get-ready-to-bounce'); }, 600));
   }
 
   public calculateDamage(): number {
@@ -49,10 +50,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public enemyAttackFlash() {
-    setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 1);
-    setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 200);
-    setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 400);
-    setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 600);
+    this._timeouts.push(setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 1));
+    this._timeouts.push(setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 200));
+    this._timeouts.push(setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 400));
+    this._timeouts.push(setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 600));
   }
 
   public async executeCommand(command: Command) {
@@ -80,18 +81,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     dmgBox.classList.add('heal-text');
     this.currentDamage = command.value;
     
-    setTimeout( () => { this.displayPlayerDamage(); }, 500 );
-    setTimeout( () => { 
+    this._timeouts.push(setTimeout( () => { this.displayPlayerDamage(); }, 500 ));
+    this._timeouts.push(setTimeout( () => { 
       commandBox.classList.add('invisible');
       this._player.healPlayer(this.currentDamage); 
-    }, 1000 );
-    setTimeout( () => { dmgBox.classList.remove('heal-text'); }, 2000 );
+    }, 1000 ));
+    this._timeouts.push(setTimeout( () => { dmgBox.classList.remove('heal-text'); }, 2000 ));
 
   }
 
   ngOnDestroy(): void {
     clearInterval(this._enemyAttackInterval);
     this.commandSub.unsubscribe();
+    this._timeouts.forEach( timeout => clearTimeout(timeout));
   }
 
 }
