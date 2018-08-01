@@ -24,7 +24,7 @@ export class OtherComponent implements OnInit {
 
   public luckyHeal() {
     this._router.navigateByUrl('home');
-    this._player.healCommand(1);
+    setTimeout( () => { this._player.healCommand(1); }, 500)
   }
 
 }

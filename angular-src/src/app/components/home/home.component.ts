@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player';
 import { Enemy } from '../../interfaces/enemy';
+import { Command } from '../../interfaces/command';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +14,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   public enemy:Enemy;
   private _enemyAttackInterval;
   public currentDamage: number;
+  public commandSub: Subscription;
+  public commandText:string;
 
   constructor(private _player: PlayerService) { }
 
   ngOnInit() {
     this.enemy = this._player.enemy;
+    console.log(this.commandSub);
     this._enemyAttackInterval = setInterval( () => { this._executeEnemyTurn(); }, 5000);
+    this.commandSub = this._player.commandObs().subscribe( (cmd:Command) => {
+      console.log('Command recieved in home');
+      this.executeCommand(cmd);
+    } )
   }
 
   private _executeEnemyTurn() {
@@ -46,8 +55,43 @@ export class HomeComponent implements OnInit, OnDestroy {
     setTimeout( () => { document.getElementById('enemyPic').classList.toggle('invert'); }, 600);
   }
 
+  public async executeCommand(command: Command) {
+    clearInterval(this._enemyAttackInterval);
+    console.log('running command', command);
+
+    try {
+      switch (command.type) {
+        case 'heal':
+        console.log('executing heal command');
+          await this._healCommand(command);
+          break;    
+      }
+    } catch (err) {
+      console.log('error in executeCommand...', err)
+    }
+    this._enemyAttackInterval = setInterval( () => { this._executeEnemyTurn(); }, 5000);
+  }
+
+  private _healCommand(command: Command) {
+    this.commandText = command.command;
+    const commandBox = document.getElementById('commandBox');
+    const dmgBox = document.getElementById('playerDmg');
+    commandBox.classList.remove('invisible');
+    dmgBox.classList.add('heal-text');
+    this.currentDamage = command.value;
+    
+    setTimeout( () => { this.displayPlayerDamage(); }, 500 );
+    setTimeout( () => { 
+      commandBox.classList.add('invisible');
+      this._player.healPlayer(this.currentDamage); 
+    }, 1000 );
+    setTimeout( () => { dmgBox.classList.remove('heal-text'); }, 2000 );
+
+  }
+
   ngOnDestroy(): void {
     clearInterval(this._enemyAttackInterval);
+    this.commandSub.unsubscribe();
   }
 
 }

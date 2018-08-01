@@ -1,4 +1,5 @@
 export interface Command {
     command: string;
-    type: number;
+    type: string;
+    value: number;
 }

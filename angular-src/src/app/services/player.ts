@@ -23,9 +23,11 @@ export class PlayerService {
     }
 
     public healCommand(num: number) {
+
         this.commandSubject.next({
-            command: 'heal',
-            type: 1
+            command: 'Lucky Heal',
+            type: 'heal',
+            value: Math.floor( Math.random() + 30 ) + 149
         });
     }
 
@@ -37,6 +39,10 @@ export class PlayerService {
         this.player.currentHP -= damage;
         if (this.player.currentHP < 0) this.player.currentHP = 0;
         this.transmitInfo();
+    }
+
+    public healPlayer(damage:number) {
+        this.player.currentHP = Math.min(this.player.maxHP, this.player.currentHP + damage);
     }
 
     public initializePlayer() {
