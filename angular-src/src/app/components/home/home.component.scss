@@ -2,6 +2,12 @@
     filter: invert(1);
 }
 
+.enemy-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 .player-side {
     position: relative;
 }

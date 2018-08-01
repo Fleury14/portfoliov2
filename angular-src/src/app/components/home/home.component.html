@@ -1,5 +1,9 @@
 <header class="flex-container justify-space-around">
-    <img [src]="enemy.img" alt="enemy" height="250" width="250" id="enemyPic">
+    <div class="enemy-box">
+        <img [src]="enemy.img" alt="enemy" height="250" width="250" id="enemyPic">
+        <h2 id="enemyDmg" class="invisible">{{ currentDamage }}</h2>
+    </div>
+    
     <div class="player-side">
         <div id="commandBox" class="command-box flex-container justify-center align-center invisible">
             <p class="text-center">{{ commandText }}</p>

@@ -44,6 +44,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._timeouts.push(setTimeout( () => { document.getElementById('playerDmg').classList.toggle('get-ready-to-bounce'); }, 600));
   }
 
+  public displayEnemyDamage() {
+    document.getElementById('enemyDmg').classList.toggle('get-ready-to-bounce');
+    this._timeouts.push(setTimeout( () => { document.getElementById('enemyDmg').classList.toggle('get-ready-to-bounce'); }, 600));
+  }
+
   public calculateDamage(): number {
     const damage = Math.floor( Math.random() * 5) + 19;
     return damage;
@@ -63,9 +68,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     try {
       switch (command.type) {
         case 'heal':
-        console.log('executing heal command');
+          console.log('executing heal command');
           await this._healCommand(command);
-          break;    
+          break;
+        case 'skill':
+          console.log('executing skill command');
+          await this._skillCommand(command);
+          break;
       }
     } catch (err) {
       console.log('error in executeCommand...', err)
@@ -87,6 +96,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       this._player.healPlayer(this.currentDamage); 
     }, 1000 ));
     this._timeouts.push(setTimeout( () => { dmgBox.classList.remove('heal-text'); }, 2000 ));
+
+  }
+
+  private _skillCommand(command: Command) {
+    this.commandText = command.command;
+    const commandBox = document.getElementById('commandBox');
+    const dmgBox = document.getElementById('enemyDmg');
+    commandBox.classList.remove('invisible');
+    this.currentDamage = command.value;
+
+    this._timeouts.push(setTimeout( () => { this.displayEnemyDamage(); }, 500 ));
+    this._timeouts.push(setTimeout( () => { 
+      commandBox.classList.add('invisible');
+      this._player.healPlayer(this.currentDamage); 
+    }, 1000 ));
 
   }
 
