@@ -2,8 +2,12 @@
     <div class="titles">
         <h2 *ngFor="let portfolio of portList" (click)="switchPort(portfolio.link)" [ngClass]="{'highlight': portfolio.title == activePort.title}">{{ portfolio.title }}</h2>
     </div>
+
     <div class="result">
+        <!-- <a [href]="activePort.href" target="blank"> -->
         <div class="result-frame" [ngStyle]="{'background': 'url(' + linkPrefix + activePort.link + ') 0% 0% / cover' }"></div>
-        <p>{{ activePort.description }}</p>
+        <!-- </a> -->
+        <a [href]="activePort.href" target="_blank"><p>{{ activePort.description }}</p></a>    
     </div>
+
 </header>

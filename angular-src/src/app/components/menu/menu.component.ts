@@ -3,6 +3,11 @@ import { INavItem } from '../../interfaces/navItem';
 import { NavItems } from '../../classes/navItems';
 import { isNgTemplate } from '../../../../node_modules/@angular/compiler';
 import { Router } from '../../../../node_modules/@angular/router';
+import { PlayerService } from '../../services/player';
+import { Actor } from '../../interfaces/actor';
+import { Enemy } from '../../interfaces/enemy';
+import { Subscription } from 'rxjs';
+import { Command } from 'src/app/interfaces/command';
 
 @Component({
   selector: 'app-menu',
@@ -14,10 +19,21 @@ export class MenuComponent implements OnInit, AfterViewInit {
   public navList = new NavItems()
   public navItems = this.navList.navItems
   private _menuIndex = 0;
+  public player: Actor;
+  public enemy: Enemy;
+  private commandSub: Subscription;
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _player: PlayerService) { }
 
   ngOnInit() {
+    this._player.playerObs().subscribe( (data:Actor) => {
+      this.player = data;
+    });
+    this._player.transmitInfo();
+    this.enemy = this._player.enemy;
+    this._player.commandObs().subscribe( (data:Command) => {
+      console.log('Command receieved', data);
+    } )
   }
 
   ngAfterViewInit() {
@@ -40,6 +56,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.navItems.forEach( (item, index) => {
       document.getElementById('opt-' + index ).innerHTML = index === this._menuIndex ? '<i class="far fa-hand-point-right"></i>' : null;
     })
+  }
+
+  refreshStats() {
+    this.player = {
+      currentHP: this._player.player.currentHP,
+      maxHP: this._player.player.maxHP,
+      currentMP: this._player.player.currentMP,
+      maxMP: this._player.player.currentMP
+    }
   }
 
 }

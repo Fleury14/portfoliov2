@@ -7,8 +7,16 @@
     display: flex;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
 .justify-space-around {
     justify-content: space-around;
+}
+
+.align-center {
+    align-items: center;
 }
 
 .text-center {
@@ -17,6 +25,10 @@
 
 .highlight {
     color: yellow;
+}
+
+.invisible {
+    opacity: 0;
 }
 
 // END GLOBAL

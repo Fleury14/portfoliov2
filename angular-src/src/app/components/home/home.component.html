@@ -1,3 +1,11 @@
-<header>
-    <img src="./../../../assets/img/jr.png" height="250" width="250" alt="me">
+<header class="flex-container justify-space-around">
+    <img [src]="enemy.img" alt="enemy" height="250" width="250" id="enemyPic">
+    <div class="player-side">
+        <div id="commandBox" class="command-box flex-container justify-center align-center invisible">
+            <p class="text-center">{{ commandText }}</p>
+        </div>
+        <img src="./../../../assets/img/jr.png" height="250" width="250" alt="me">
+        <h2 id="playerDmg" class="invisible">{{ currentDamage }}</h2>
+    </div>
+    
 </header>

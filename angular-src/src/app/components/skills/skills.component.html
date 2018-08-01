@@ -1,6 +1,6 @@
 <header>
     <div class="skill-list flex-container">
-        <div *ngFor="let skill of xp" class="skills-card flex-container">
+        <div *ngFor="let skill of xp" class="skills-card flex-container" (click)="switchSkill(skill.title)">
             <img [src]="'./../../../assets/img/skills/' + skill.filename" height="50" width="50" [alt]="skill.filename">
             <div>
                 <div class="xp-frame">
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="skill-desc">
-        <h2 class="highlight">ANGULAR 6</h2>
-        <p>Most of my projects, either for work, or my side projects are written using either angular 4, 5, or 6. I have also co-taught classes at Geekwise Academy instructing people getting in to Angular.</p>
+        <h2 class="highlight">{{ activeSkill.title | uppercase }}</h2>
+        <p>{{ activeSkill.description }}</p>
     </div>
 </header>

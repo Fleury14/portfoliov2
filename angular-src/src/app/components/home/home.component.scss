@@ -1,0 +1,64 @@
+.invert {
+    filter: invert(1);
+}
+
+.player-side {
+    position: relative;
+}
+
+h2 {
+    margin: 0;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    text-shadow: 4px 4px #000;
+    transform: translateX(-50%);
+}
+
+.hide {
+    display: none;
+}
+
+.get-ready-to-bounce {
+    opacity: 1;
+    animation-duration: 0.45s;
+    animation-name: bounce;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translate(-50%, 0px);
+    }
+
+    25% {
+        transform: translate(-50%, -50px);
+    }
+
+    50% {
+        transform: translate(-50%, 0px);
+    }
+
+    75% {
+        transform: translate(-50%, -25px);
+    }
+
+    100% {
+        transform: translate(-50%, 0px);
+    }
+}
+
+.command-box {
+    width: 200px;
+    height: 50px;
+    background-color: #0f1070;
+    border: 6px ridge;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    left: 20px;
+}
+
+.heal-text {
+    color: #44cc44;
+}
