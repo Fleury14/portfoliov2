@@ -39,6 +39,15 @@ export class PlayerService {
         });
     }
 
+    public hasEnoughMP(cost: number) {
+        return this.player.currentMP >= cost;
+    }
+
+    public consumeMp(cost: number) {
+        this.player.currentMP = this.player.currentMP - cost >= 0 ? this.player.currentMP - cost : 0;
+        this.transmitInfo();
+    }
+
     public transmitInfo() {
         this.playerSubject.next(this.player);
     }

@@ -15,4 +15,5 @@
         <p>{{ activeSkill.description }}</p>
         <button class="" (click)="executeSkill(activeSkill)" id="skillButton">Click To Use Skill</button>
     </div>
+    <p class="warning highlight" *ngIf="showWarning">Not Enough MP! Try the About page..</p>
 </header>
