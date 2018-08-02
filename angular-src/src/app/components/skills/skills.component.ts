@@ -38,7 +38,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
       this._router.navigateByUrl('home');
       setTimeout( () => {
         this._player.skillCommand({
-          command: skill.name,
+          command: skill.title,
           type: 'skill',
           value: damage
         });
