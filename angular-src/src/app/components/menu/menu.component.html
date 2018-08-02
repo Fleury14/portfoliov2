@@ -17,5 +17,6 @@
       <h2>J.R. RUGGIERO</h2>
       <p>HP: {{ player?.currentHP }} / {{ player?.maxHP }}</p>
       <p>MP: {{ player?.currentMP }} / {{ player?.maxMP }}</p>
+      <p *ngIf="ool">You ran out of HP! Lets try this again.</p>
   </div>
 </main>
