@@ -48,6 +48,11 @@ export class PlayerService {
         this.transmitInfo();
     }
 
+    public restoreMP() {
+        this.player.currentMP = this.player.maxMP;
+        this.transmitInfo();
+    }
+
     public transmitInfo() {
         this.playerSubject.next(this.player);
     }

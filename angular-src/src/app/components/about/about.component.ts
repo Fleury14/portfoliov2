@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../services/player';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _player: PlayerService ) { }
 
   ngOnInit() {
+  }
+
+  public computerEnter() {
+    document.getElementById('healButton').classList.remove('invisible');
+  }
+
+  public computerLeave() {
+    document.getElementById('healButton').classList.add('invisible');
+  }
+
+  public MPHeal() {
+    this._player.restoreMP();
   }
 
 }
