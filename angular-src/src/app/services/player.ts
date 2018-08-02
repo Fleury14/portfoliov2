@@ -69,4 +69,14 @@ export class PlayerService {
         this.enemy = this.enemyClass.enemies[randIndex];
         console.log('Enemy initialized');
     }
+
+    public damageEnemy(damage: number): boolean {
+        this.enemy.currentHP -= damage;
+        if (this.enemy.currentHP <= 0) {
+            this.enemy.currentHP = 0;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

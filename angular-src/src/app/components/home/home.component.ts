@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public commandSub: Subscription;
   public commandText:string;
   private _timeouts: any[] = [];
+  public victoryMessage = 'Job has been completed!'
 
   constructor(private _player: PlayerService) { }
 
@@ -109,15 +110,33 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._timeouts.push(setTimeout( () => { this.displayEnemyDamage(); }, 500 ));
     this._timeouts.push(setTimeout( () => { 
       commandBox.classList.add('invisible');
-      this._player.healPlayer(this.currentDamage); 
+      if(this._player.damageEnemy(this.currentDamage) === true) {
+        this.enemyDeathAnim();
+        this.victory();
+      } 
     }, 1000 ));
 
+  }
+
+  public enemyDeathAnim() {
+    document.querySelector('.enemy-box').classList.add('enemy-death');
   }
 
   ngOnDestroy(): void {
     clearInterval(this._enemyAttackInterval);
     this.commandSub.unsubscribe();
     this._timeouts.forEach( timeout => clearTimeout(timeout));
+  }
+
+  public victory() {
+    document.querySelector('.victory-box').classList.remove('invisible');
+    this._timeouts.push( setTimeout( () => { this.victoryMessage = 'But a new job has appeared...'; }, 2000 ) );
+    this._timeouts.push( setTimeout( () => {
+      this._player.getEnemy();
+      this.enemy = this._player.enemy;
+      document.querySelector('.victory-box').classList.add('invisible');
+      document.querySelector('.enemy-box').classList.remove('enemy-death');
+    }, 4000 ) );
   }
 
 }
