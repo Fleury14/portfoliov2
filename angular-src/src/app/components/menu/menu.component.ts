@@ -35,8 +35,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
         this.outOfLife();
       } else this.ool = false;
     });
+
+    this._player.enemyObs().subscribe( (data:Enemy) => {
+      this.enemy = data;
+    })
     this._player.transmitInfo();
-    this.enemy = this._player.enemy;
+    this._player.transmitEnemyInfo();
     this._player.commandObs().subscribe( (data:Command) => {
       console.log('Command receieved', data);
     } )

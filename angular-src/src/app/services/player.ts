@@ -13,6 +13,7 @@ export class PlayerService {
     enemyClass:EnemyList = new EnemyList();
     playerSubject: Subject<Actor> = new Subject();
     commandSubject: Subject<Command> = new Subject();
+    enemySubject: Subject<Enemy> = new Subject();
 
     public playerObs():Observable<Actor> {
         return this.playerSubject.asObservable();
@@ -20,6 +21,10 @@ export class PlayerService {
 
     public commandObs():Observable<Command> {
         return this.commandSubject.asObservable();
+    }
+
+    public enemyObs(): Observable<Enemy> {
+        return this.enemySubject.asObservable();
     }
 
     public healCommand(num: number) {
@@ -81,6 +86,9 @@ export class PlayerService {
     public getEnemy() {
         let randIndex = Math.floor( Math.random() * this.enemyClass.enemies.length );
         this.enemy = this.enemyClass.enemies[randIndex];
+        this.enemy.currentHP = this.enemy.maxHP;
+        this.enemy.currentMP = this.enemy.maxMP;
+        this.transmitEnemyInfo();
         console.log('Enemy initialized');
     }
 
@@ -92,5 +100,9 @@ export class PlayerService {
         } else {
             return false;
         }
+    }
+
+    public transmitEnemyInfo() {
+        this.enemySubject.next(this.enemy);
     }
 }

@@ -22,7 +22,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private _player: PlayerService) { }
 
   ngOnInit() {
-    this.enemy = this._player.enemy;
+    this._player.enemyObs().subscribe( (data:Enemy) => {
+      this.enemy = data;
+    })
+    this._player.transmitEnemyInfo();
     console.log(this.commandSub);
     this._enemyAttackInterval = setInterval( () => { this._executeEnemyTurn(); }, 5000);
     this.commandSub = this._player.commandObs().subscribe( (cmd:Command) => {
@@ -133,7 +136,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._timeouts.push( setTimeout( () => { this.victoryMessage = 'But a new job has appeared...'; }, 2000 ) );
     this._timeouts.push( setTimeout( () => {
       this._player.getEnemy();
-      this.enemy = this._player.enemy;
+      this._player.transmitEnemyInfo();
       document.querySelector('.victory-box').classList.add('invisible');
       document.querySelector('.enemy-box').classList.remove('enemy-death');
     }, 4000 ) );
