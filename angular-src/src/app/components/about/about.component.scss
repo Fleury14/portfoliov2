@@ -1,10 +1,19 @@
 header {
 
     img {
-        margin-left: 30px;margin-right: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
     }
 
     div {
         line-height: 24px;
+    }
+
+    .computer-bg {
+        background: url('./../../../assets/img/computer.png');
+        height: 250px;
+        min-width: 250px;
+        margin-right: 25px;
+        margin-left: 25px;
     }
 }
