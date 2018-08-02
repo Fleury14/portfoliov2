@@ -22,12 +22,18 @@ export class MenuComponent implements OnInit, AfterViewInit {
   public player: Actor;
   public enemy: Enemy;
   private commandSub: Subscription;
+  public ool = false;
+  private _timeouts: any[] = [];
 
   constructor(private _router: Router, private _player: PlayerService) { }
 
   ngOnInit() {
     this._player.playerObs().subscribe( (data:Actor) => {
       this.player = data;
+      if (this.player.currentHP === 0) {
+        this.ool = true;
+        this.outOfLife();
+      } else this.ool = false;
     });
     this._player.transmitInfo();
     this.enemy = this._player.enemy;
@@ -65,6 +71,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
       currentMP: this._player.player.currentMP,
       maxMP: this._player.player.currentMP
     }
+  }
+
+  public outOfLife() {
+    this._timeouts.push( setTimeout( () => {
+      this._player.healPlayer(700);
+    }, 1000 ) )
   }
 
 }
