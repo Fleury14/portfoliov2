@@ -41,6 +41,22 @@ header {
     border-radius: 5px;
 }
 
+#skillButton {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px;
+    border: 6px ridge;
+    border-radius: 5px;
+    color: #eee;
+    background-color: #0f1070;
+    transition: 0.5s all;
+    display: block;
+    margin: 0 auto;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 @media only screen and (max-width: 768px) {
 
 

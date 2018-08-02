@@ -31,6 +31,14 @@ export class PlayerService {
         });
     }
 
+    public skillCommand(command: Command) {
+        this.commandSubject.next({
+            command: command.command,
+            type: command.type,
+            value: command.value
+        });
+    }
+
     public transmitInfo() {
         this.playerSubject.next(this.player);
     }
@@ -60,5 +68,15 @@ export class PlayerService {
         let randIndex = Math.floor( Math.random() * this.enemyClass.enemies.length );
         this.enemy = this.enemyClass.enemies[randIndex];
         console.log('Enemy initialized');
+    }
+
+    public damageEnemy(damage: number): boolean {
+        this.enemy.currentHP -= damage;
+        if (this.enemy.currentHP <= 0) {
+            this.enemy.currentHP = 0;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
