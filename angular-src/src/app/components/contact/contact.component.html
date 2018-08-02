@@ -1,21 +1,9 @@
 <header>
     <h1>Want to hire me? Say hello? Discuss fighting games?</h1>
     <div class="icon-container flex-container">
-        <a href="http://twitter.com/lqfleury14" target="_blank"><div class="icon-set flex-container">
-            <i class="fab fa-twitter-square contact-icon"></i>
-            <p>LQFleury14</p>
-        </div></a>
-        <a href="mailto:lruggierojr@gmail.com" target="_blank"><div class="icon-set flex-container">
-            <i class="far fa-envelope"></i>
-            <p>lruggierojr@gmail.com</p>
-        </div></a>
-        <a href="http://github.com/fleury14" target="_blank"><div class="icon-set flex-container">
-            <i class="fab fa-github"></i>
-            <p>Fleury14</p>
-        </div></a>
-        <a href="https://www.linkedin.com/in/leonard-ruggiero-jr-bba192152/" target="_blank"><div class="icon-set flex-container">
-            <i class="fab fa-linkedin-in"></i>
-            <p>LinkedIn</p>
+        <a *ngFor="let contact of contacts; index as i" href="{{ contact.href }}" target="_blank"><div [@contactState]="contact.animate ? 'complete' : 'init'" class="icon-set flex-container">
+            <i class="{{ contact.class }}"></i>
+            <p>{{ contact.value }}</p>
         </div></a>
     </div>
 </header>
