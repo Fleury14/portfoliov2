@@ -40,7 +40,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
         this._player.skillCommand({
           command: skill.title,
           type: 'skill',
-          value: damage
+          value: damage,
+          skill: skill
         });
       } );
     } else {

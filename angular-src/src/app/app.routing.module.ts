@@ -7,10 +7,15 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { OtherComponent } from './components/other/other.component';
 import { ErrorComponent } from './components/error/error.component';
+import { EncounterComponent } from './components/encounter/encounter.component';
 
 const routes: Route[] = [{
     path: 'home',
     component: HomeComponent
+},
+{
+    path: 'encounter',
+    component: EncounterComponent
 },
 {
     path: 'portfolio',
@@ -54,4 +59,5 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent, ContactComponent, OtherComponent, ErrorComponent ];
+export const routingComponents = [ HomeComponent, PortfolioComponent, SkillsComponent, AboutComponent,
+    ContactComponent, OtherComponent, ErrorComponent, EncounterComponent ];

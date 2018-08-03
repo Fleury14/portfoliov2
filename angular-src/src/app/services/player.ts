@@ -40,7 +40,8 @@ export class PlayerService {
         this.commandSubject.next({
             command: command.command,
             type: command.type,
-            value: command.value
+            value: command.value,
+            skill: command.skill
         });
     }
 

@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public commandText:string;
   private _timeouts: any[] = [];
   public victoryMessage = 'Job has been completed!'
+  public skillBackground: string;
 
   constructor(private _player: PlayerService) { }
 
@@ -109,8 +110,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     const dmgBox = document.getElementById('enemyDmg');
     commandBox.classList.remove('invisible');
     this.currentDamage = command.value;
+    this.skillBackground = command.skill.filename;
+    this._timeouts.push(setTimeout( () => {document.getElementById('skillToAnimate').classList.add('get-smacked-by-a-skill')}, 500));
+    console.log(document.getElementById('skillToAnimate'));
 
-    this._timeouts.push(setTimeout( () => { this.displayEnemyDamage(); }, 500 ));
+    this._timeouts.push(setTimeout( () => { this.displayEnemyDamage(); }, 1500 ));
     this._timeouts.push(setTimeout( () => { 
       commandBox.classList.add('invisible');
       if(this._player.damageEnemy(this.currentDamage) === true) {

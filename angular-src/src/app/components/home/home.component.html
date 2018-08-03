@@ -10,6 +10,7 @@
         </div>
         <img src="./../../../assets/img/jr.png" height="250" width="250" alt="me">
         <h2 id="playerDmg" class="invisible">{{ currentDamage }}</h2>
+        <div *ngIf="skillBackground" id="skillToAnimate" class="skill-animatee" [ngStyle]="{'background' : 'url(../../../assets/img/skills/' + skillBackground + ')', 'background-size' : 'cover'}"></div>
     </div>
     <div class="victory-box invisible">
         <h1>{{ victoryMessage }}</h1>
