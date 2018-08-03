@@ -24,6 +24,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   private commandSub: Subscription;
   public ool = false;
   private _timeouts: any[] = [];
+  private _beginAnimation: boolean = false;
 
   constructor(private _router: Router, private _player: PlayerService) { }
 
@@ -43,7 +44,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this._player.transmitEnemyInfo();
     this._player.commandObs().subscribe( (data:Command) => {
       console.log('Command receieved', data);
-    } )
+    } );
+    this._beginAnimation = true;
   }
 
   ngAfterViewInit() {

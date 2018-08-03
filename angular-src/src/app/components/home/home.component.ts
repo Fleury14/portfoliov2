@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private _timeouts: any[] = [];
   public victoryMessage = 'Job has been completed!'
   public skillBackground: string;
+  private _beginAnimation: boolean = false;
 
   constructor(private _player: PlayerService) { }
 
@@ -32,7 +33,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.commandSub = this._player.commandObs().subscribe( (cmd:Command) => {
       console.log('Command recieved in home');
       this.executeCommand(cmd);
-    } )
+    } );
+    // if(!sessionStorage.getItem('intro')) {
+    //   this._beginAnimation = true;
+    //   sessionStorage.setItem('intro', 'true');
+    // }
   }
 
   private _executeEnemyTurn() {

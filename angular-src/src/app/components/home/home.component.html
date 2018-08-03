@@ -1,4 +1,4 @@
-<header class="flex-container justify-space-around">
+<header class="flex-container justify-space-around" [ngClass]="{'opening' : _beginAnimation}">
     <div class="enemy-box">
         <img [src]="enemy.img" alt="enemy" height="250" width="250" id="enemyPic">
         <h2 id="enemyDmg" class="invisible">{{ currentDamage }}</h2>

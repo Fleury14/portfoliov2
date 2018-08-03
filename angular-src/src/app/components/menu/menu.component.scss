@@ -1,3 +1,19 @@
+.opening {
+    animation-name: opening;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes opening {
+    0% {
+        filter: blur(1.5rem);
+    }
+
+    100% {
+        filter: blur(0);
+    }
+}
+
 .arrow-column {
     width: 25px;
     margin-top: 7px;
